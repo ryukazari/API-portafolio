@@ -1,0 +1,6 @@
+npm init
+npm install express --save
+npm install body-parser --save //convertir peticiones a json 
+npm install connect-multiparty --save //subir archivos 
+npm install mongoose --save //MongoDB
+npm install nodemon --save-dev //actualización automática
