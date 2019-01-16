@@ -4,7 +4,7 @@ const server = http.createServer(app);
 const port = process.env.PORT || 3700;
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/Portafolio')
+mongoose.connect('mongodb://root:root@ds259154.mlab.com:59154/portafoliodb')
     .then(()=>{
         console.log("SUCCESSFUL CONNECTION");
 
