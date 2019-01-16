@@ -1,5 +1,6 @@
 var Project = require('../models/project');
 var fs = require('fs');
+var path = require('path');
 
 var controller ={
 
@@ -99,6 +100,18 @@ var controller ={
         }
 
 
+    },
+
+    getImage: (req,res)=>{
+        let image = req.params.image;
+        let pathFile = './uploads/'+image;
+        fs.exists(pathFile, (exists)=>{
+            if(exists){
+                return res.sendFile(path.resolve(pathFile))
+            }else{
+                return res.status(200).send({message: 'no existe la imagen'});
+            }
+        });
     }
 
 
