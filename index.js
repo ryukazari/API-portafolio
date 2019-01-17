@@ -1,16 +1,20 @@
-const mongoose = require('mongoose');
-const app = require ('./app');
-const server = http.createServer(app);
-const port = process.env.PORT || 3700;
+//const port='https://backend-portafolio-nodejs.herokuapp.com/';
+
+//mongoose.connect('mongodb://root:root@ds259154.mlab.com:59154/portafoliodb')
+
+var mongoose = require('mongoose');
+var app = require('./app');
+var port = process.env.PORT || 3700;
+
 mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://root:root1234@ds259154.mlab.com:59154/portafoliodb')
+        .then(() => {
+        	console.log("Conexión a la base de datos establecida satisfactoriamente...");
 
-mongoose.connect('mongodb://root:root@ds259154.mlab.com:59154/portafoliodb')
-    .then(()=>{
-        console.log("SUCCESSFUL CONNECTION");
+        	// Creacion del servidor
+        	app.listen(port, () => {
+        		console.log("Servidor corriendo correctamente en la url: localhost:3700");
+        	});
 
-        //Creación del Servidor
-        server.listen(app.get('port'),()=>{
-            console.log("SERVER RUNNING, ${app.get('port')}");
         })
-    })
-    .catch(err => console.log(err));
+        .catch(err => console.log(err));
