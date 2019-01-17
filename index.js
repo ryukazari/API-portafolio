@@ -13,7 +13,7 @@ mongoose.connect('mongodb://root:root1234@ds259154.mlab.com:59154/portafoliodb')
 			console.log(port);
 			
         	// Creacion del servidor
-        	app.listen(port, () => {
+        	app.listen(process.env.PORT || 3700, () => {
         		console.log("Servidor corriendo correctamente en la url: localhost:3700");
         	});
 
