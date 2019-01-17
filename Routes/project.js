@@ -6,7 +6,7 @@ const router = express.Router();
 const multipart = require('connect-multiparty');
 const multipartmiddleware = multipart({uploadDir: './uploads'})
 
-router.get('/home', projectController.home);
+router.get('/', projectController.home);
 router.post('/test',  projectController.test);
 router.post('/save-project', projectController.saveProject);
 router.get('/project/:id?', projectController.getProject);
