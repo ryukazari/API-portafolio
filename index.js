@@ -1,6 +1,3 @@
-//const port='https://backend-portafolio-nodejs.herokuapp.com/';
-
-//mongoose.connect('mongodb://root:root@ds259154.mlab.com:59154/portafoliodb')
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -9,8 +6,6 @@ var mongoose = require('mongoose');
 var app = express();
 
 app.set('port',process.env.PORT || 3700);
-
-
 
 var project_routes = require('./routes/project');
 
@@ -29,8 +24,6 @@ app.use((req, res, next) => {
 
 // rutas
 app.use('/api', project_routes);
-
-
 
 app.listen(app.get('port'),()=>{
 	console.log("Server on: ${app.get('port')}");
