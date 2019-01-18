@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 app.use('/api', project_routes);
 
 app.listen(port,()=>{
-	console.log("Server on: ${app.get('port')}");
+	console.log("Server on: "+port);
 	
 });
 
