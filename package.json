@@ -15,8 +15,5 @@
     "express": "^4.16.4",
     "mongoose": "^5.3.13",
     "rxjs-compat": "^6.3.3"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
   }
 }
