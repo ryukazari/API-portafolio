@@ -24,7 +24,7 @@ var controller ={
         project.category=params.category;
         project.year=params.year;
         project.langs=params.langs;
-        project.image=null;
+        project.image="a8Uw3nDw5U8uDe5SCXimqSPN.png";
 
         project.save(function(err,projectStored){
             if(err) return res.status(500).send({message: 'error al guardar'});
@@ -75,7 +75,7 @@ var controller ={
 
     uploadImage: function(req, res){
         var projectId = req.params.id;
-        var fileName = 'imagen no subida :(';
+        var fileName = 'a8Uw3nDw5U8uDe5SCXimqSPN.png';
 
         if(req.files){
             let filePath = req.files.image.path;
@@ -83,7 +83,7 @@ var controller ={
             var fileName = fileSplit[1];
             let extensionSplit = fileName.split('.');
             let fileExtension = extensionSplit[1];
-
+            
             if(fileExtension == 'jpg' || fileExtension == 'png' || fileExtension == 'jpeg' || fileExtension == 'gif'){
                 Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true}, function(err, projectUpdate){
                     if(err) return res.status(500).send({message: 'la imagen no se subió'});
@@ -96,7 +96,19 @@ var controller ={
                 });
             }            
         }else{
-            return res.status(200).send({message: fileName});
+            
+            //return res.status(200).send({message: fileName});
+            if(fileExtension == 'jpg' || fileExtension == 'png' || fileExtension == 'jpeg' || fileExtension == 'gif'){
+                Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true}, function(err, projectUpdate){
+                    if(err) return res.status(500).send({message: 'la imagen no se subió'});
+                    if(!projectUpdate) return res.status(404).send({message:'NOOOOOOOO'});
+                    return res.status(200).send({project: projectUpdate});
+                 });
+            }else{
+                fs.unlink(filePath, function(err){
+                    return res.status(200).send({message: 'la extension no es valida'})
+                });
+            }   
         }
 
 
